@@ -3,11 +3,15 @@ from volatile import *
 from models import *
 
 from copy import deepcopy
+from volatile import download, convert_currency
+from models import train_s, s_model, train, define_model, extract_hierarchical_info, estimate_clusters
 
 def second_moment_loss(tt: np.array, mu: np.array, sigma: np.array, logp: np.array) -> float:
     """
-    Because log-price likelihood is Gaussian, standardizing the test data should give a second moment (i.e. squared
-    expectation plus variance) of 1.
+    Calculates the second moment loss for a given set of parameters and test data.
+
+    The second moment loss measures the deviation of the standardized test data from the expected value of 1. It is
+    calculated as the absolute difference between the mean of the squared standardized scores and 1.
 
     Parameters
     ----------
@@ -19,6 +23,12 @@ def second_moment_loss(tt: np.array, mu: np.array, sigma: np.array, logp: np.arr
         Standard deviation parameters.
     logp: np.array
         Log-prices at stock-level.
+
+    Returns
+    -------
+    float
+        The second moment loss.
+
     """
     est, std = estimate_logprice_statistics(mu, sigma, tt)
     scores = (est - logp) / std

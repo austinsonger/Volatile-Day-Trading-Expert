@@ -20,6 +20,44 @@ def download(tickers: list, start: Union[str, int] = None, end: Union[str, int] 
     ----------
     tickers: list
         Tickers for which to download historical information.
+    start: str or int, optional
+        Start download data from this date. If not provided, defaults to one year ago from today.
+    end: str or int, optional
+        End download data at this date. If not provided, defaults to today.
+    interval: str, optional
+        Frequency between data. Defaults to "1d" (daily).
+
+    Returns
+    -------
+    data: dict
+        Dictionary including the following keys:
+        - tickers: list of tickers
+        - dates: array of datetime objects representing the dates of the downloaded data
+        - price: array of log-adjusted closing prices, shape=(num stocks, length period);
+        - volume: array of volumes, shape=(num stocks, length period);
+        - currencies: list of currencies for each ticker
+        - exchange_rates: dictionary of exchange rates for each currency
+        - default_currency: the most common currency among the tickers
+        - sectors: dictionary of stock sector for each ticker;
+        - industries: dictionary of stock industry for each ticker.
+
+    Raises
+    ------
+    Exception
+        If no symbol with full information is available.
+    """
+    tickers = tickers if isinstance(tickers, (list, set, tuple)) else tickers.replace(',', ' ').split()
+    tickers = list(set([ticker.upper() for ticker in tickers]))
+
+    # Rest of the code...
+def download(tickers: list, start: Union[str, int] = None, end: Union[str, int] = None, interval: str = "1d") -> dict:
+    """
+    Download historical data for tickers in the list.
+
+    Parameters
+    ----------
+    tickers: list
+        Tickers for which to download historical information.
     start: str or int
         Start download data from this date.
     end: str or int
