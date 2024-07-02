@@ -1,18 +1,16 @@
-<table>
-<tr>
-<td width=170>
-  
-![b1d3115b-97e1-4703-b382-49fc786b9e19_200x200](https://user-images.githubusercontent.com/32386694/100524005-e02f4280-31b4-11eb-9765-a53c138929d9.png)
+# Volatile-Day-Trading-Expert
 
-</td>
-<td>
+The goal of this tool is to create a comprehensive stock trading companion tool called "Volatile" that assists users in making informed trading decisions through data analysis, model predictions, and visualizations. 
+- The tool will handle various tasks, including downloading and caching stock data, converting currencies, and extracting hierarchical information about sectors and industries.
 
-# Volatile 
-### Your day-to-day trading companion.
-Please consult the [Wiki](https://github.com/gianlucadetommaso/volatile/wiki) for documentation about this project.
+- It will train models to discover correlations and predict future trends for multiple stocks, calculate statistical metrics like log price and price statistics, and rate and rank stocks based on their performance.
 
-**License:** BSD-3-Clause License
+- Additionally, it will identify matches and clusters among stocks, providing a detailed prediction table with essential information such as symbols, sectors, industries, prices, ratings, growth rates, and volatility.
 
-</td>
-</tr>
-</table>
+- The tool will offer visualization options to plot market, sector, industry, and stock estimates, as well as stock matches, enhancing the decision-making process for traders.
+
+
+
+
+
+
