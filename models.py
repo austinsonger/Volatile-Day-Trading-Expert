@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
 import tensorflow as tf
 import tensorflow_probability as tfp
 from tensorflow_probability import distributions as tfd
@@ -16,7 +15,7 @@ def s_model(info: dict) -> tfd.JointDistributionSequentialAutoBatched:
     """
     tt = info['tt']
     order_scale = info['order_scale']
-    order =  len(order_scale) - 1
+    order = len(order_scale) - 1
 
     m = [tfd.Normal(loc=tf.zeros([info['num_stocks'], order + 1]), scale=4 * order_scale), # phi
          tfd.Normal(loc=tf.zeros([info['num_stocks'], 1]), scale=4)] # psi
@@ -61,10 +60,12 @@ def train_s(logp: np.array, info: dict, learning_rate: float = 0.01, num_steps: 
         plt.plot(loss)
         plt.legend(["loss decay"], fontsize=12, loc="upper right")
         plt.xlabel("iteration", fontsize=12)
-        fig.savefig(fig_name, dpi=fig.dpi)
-        print('Loss decay plot has been saved in this directory as {}.'.format(fig_name))
+        plt.ylabel("loss", fontsize=12)
+        plt.grid(True)
+        plt.savefig(fig_name)
+        plt.close(fig)
 
-    return phi, psi
+    return phi, psi, loss
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
